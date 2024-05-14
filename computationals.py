@@ -14,11 +14,13 @@ from test.constants import ASSETS, MAX_EXPO, MIN_EXPO, STEP  # noqa: F403, E402
 from test.helper import sum_from_tuple  # noqa: E402
 
 
-def test_validity_csv(df: pd.DataFrame):
+def test_validity_df(df: pd.DataFrame):
     condition_1: bool = MIN_EXPO in df[ASSETS].values
     condition_2: bool = MAX_EXPO in df[ASSETS].values
     condition_3: bool = STEP in df[ASSETS].values
-    if (condition_1 is False) or (condition_2 is False) or (condition_3 is False):
+    if condition_1 and condition_2 and condition_3:
+        print("Le fichier des contraintes est valide")
+    else:
         raise Exception(
             "Le fichier des contraintes nest pas valide, assurez-vous que",
             MIN_EXPO,
@@ -27,8 +29,6 @@ def test_validity_csv(df: pd.DataFrame):
             STEP,
             "sont bien le nom des lignes.",
         )
-    else:
-        print("Le fichier des contraintes est valide")
 
 
 def open_csv_to_dataframe(filename: str) -> pd.DataFrame:

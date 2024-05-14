@@ -11,7 +11,7 @@ sys.path.insert(
 from test.computationals import (  # noqa: E402
     compute_possible_allocations,
     open_csv_to_dataframe,
-    test_validity_csv,
+    test_validity_df,
 )
 
 
@@ -20,13 +20,13 @@ def main() -> None:
     # TODO
 
     # 1 - Read constraints file
-    dataFrame = open_csv_to_dataframe(
+    dataframe = open_csv_to_dataframe(
         "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations/input/constraints.csv"
     )
-    test_validity_csv(dataFrame)
+    test_validity_df(dataframe)
     # 2 - Compute number of possible allocation & print number of allocations
     # 3 - Write result in output file
-    compute_possible_allocations(dataFrame)
+    compute_possible_allocations(dataframe)
 
 
 if __name__ == "__main__":
