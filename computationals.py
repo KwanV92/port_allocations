@@ -10,8 +10,25 @@ sys.path.insert(
 )
 
 
-from test.constants import MAX_EXPO, MIN_EXPO, STEP  # noqa: F403, E402
+from test.constants import ASSETS, MAX_EXPO, MIN_EXPO, STEP  # noqa: F403, E402
 from test.helper import sum_from_tuple  # noqa: E402
+
+
+def test_validity_csv(df: pd.DataFrame):
+    condition_1: bool = MIN_EXPO in df[ASSETS].values
+    condition_2: bool = MAX_EXPO in df[ASSETS].values
+    condition_3: bool = STEP in df[ASSETS].values
+    if (condition_1 is False) or (condition_2 is False) or (condition_3 is False):
+        raise Exception(
+            "Le fichier des contraintes nest pas valide, assurez-vous que",
+            MIN_EXPO,
+            MAX_EXPO,
+            "et",
+            STEP,
+            "sont bien le nom des lignes.",
+        )
+    else:
+        print("Le fichier des contraintes est valide")
 
 
 def open_csv_to_dataframe(filename: str) -> pd.DataFrame:
@@ -56,3 +73,8 @@ def compute_possible_allocations(df: pd.DataFrame) -> None:
         "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations/output/allocations.csv",
         sep=",",
     )
+
+
+df = open_csv_to_dataframe(
+    "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations/input/constraints.csv"
+)
