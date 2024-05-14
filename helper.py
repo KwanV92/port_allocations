@@ -1,15 +1,10 @@
-import os
 import sys
-import pandas as pd 
+
+import pandas as pd
 
 sys.path.insert(
     0,
     "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations",
-)
-
-
-os.chdir(
-    "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations"
 )
 
 
@@ -35,6 +30,7 @@ def list_slicer(list: list):
     for object in list:
         yield tuple(object)
 
-def open_csv_to_dataframe(filename:str) -> pd.DataFrame :
-    df = pd.read_csv('constraints.csv')
-    return df 
+
+def open_csv_to_dataframe(filename: str) -> pd.DataFrame:
+    df = pd.read_csv("constraints.csv")
+    return df

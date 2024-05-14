@@ -1,5 +1,5 @@
 """ Main """
-import os
+
 import sys
 import time
 
@@ -8,13 +8,9 @@ sys.path.insert(
     "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations",
 )
 
-from computationals import (  # noqa: E402
-    open_csv_to_dataframe,
+from test.computationals import (  # noqa: E402
     compute_possible_allocations,
-)
-
-os.chdir(
-    "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations"
+    open_csv_to_dataframe,
 )
 
 
@@ -23,7 +19,9 @@ def main() -> None:
     # TODO
 
     # 1 - Read constraints file
-    dataFrame = open_csv_to_dataframe('constraints.csv')
+    dataFrame = open_csv_to_dataframe(
+        "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations/input/constraints.csv"
+    )
     # 2 - Compute number of possible allocation & print number of allocations
     # 3 - Write result in output file
     compute_possible_allocations(dataFrame)
