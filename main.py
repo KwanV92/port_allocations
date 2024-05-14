@@ -1,16 +1,32 @@
 """ Main """
-
-
+import os
+import sys
 import time
+
+sys.path.insert(
+    0,
+    "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations",
+)
+
+from computationals import (  # noqa: E402
+    open_csv_to_dataframe,
+    compute_possible_allocations,
+)
+
+os.chdir(
+    "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations"
+)
 
 
 def main() -> None:
     """Main"""
     # TODO
+
     # 1 - Read constraints file
-    # 2 - Compute number of possible allocation
+    dataFrame = open_csv_to_dataframe('constraints.csv')
+    # 2 - Compute number of possible allocation & print number of allocations
     # 3 - Write result in output file
-    # 4 - Test with several constraints files
+    compute_possible_allocations(dataFrame)
 
 
 if __name__ == "__main__":
@@ -27,4 +43,3 @@ if __name__ == "__main__":
     print("\n******** TIME ************")
     print(f"Execution time : {time.strftime('%H:%M:%S', time.gmtime(elapsed_time))}")
     print(f"CPU time : {time.strftime('%H:%M:%S', time.gmtime(cpu_time))}")
-    print("**************************")
