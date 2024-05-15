@@ -10,10 +10,12 @@ sys.path.insert(
     "C:/Users/S084870/OneDrive - Abeille Assurances/Bureau/TOM/Projet/port_allocation/port_allocations",
 )
 
-from test.computationals import (  # noqa: E402
+
+from src.computationals import (  # noqa: E402
+    check_validity_df,
     compute_all_possible_allocations,
     compute_all_possible_weights,
-    test_validity_df,
+    output_file_name_ask,
 )
 
 
@@ -23,7 +25,7 @@ def main() -> None:
 
     # 1 - Read constraints file
     dataframe = pd.read_csv("input/constraints.csv")
-    test_validity_df(dataframe)
+    check_validity_df(dataframe)
     # 2 - Compute number of possible allocation
     all_possible_weights: list = compute_all_possible_weights(dataframe)
     all_valid_allocations_df: pd.DataFrame = compute_all_possible_allocations(
@@ -37,7 +39,7 @@ def main() -> None:
     )
     # 3 - Write result in output file
     all_valid_allocations_df.to_csv(
-        "output/allocations.csv",
+        output_file_name_ask(),
         sep=",",
     )
 
